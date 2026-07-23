@@ -6,7 +6,7 @@ The library repository remains the source of truth.
 
 ## Live visual
 
-[Open the v1.9.1 three-run runtime trace](https://igareosh.github.io/fpf-agentic-thinking-map/demos/three-runs.html).
+[Open the v1.9.2 three-run runtime trace](https://igareosh.github.io/fpf-agentic-thinking-map/demos/three-runs.html).
 
 It shows three test-backed paths:
 
