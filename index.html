@@ -3,15 +3,77 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Public project index for igareosh.">
 <title>igareosh.github.io</title>
 <style>
-  body{ font-family: system-ui, sans-serif; max-width: 760px; margin: 40px auto; padding: 0 20px; line-height: 1.6; }
-  code, pre{ background: #f5f5f5; padding: 0 4px; }
+  :root{
+    color-scheme: dark;
+    --bg: #0a0d10;
+    --panel: #10151a;
+    --line: #2a3540;
+    --ink: #e9e4d8;
+    --dim: #8f99a1;
+    --amber: #ffb454;
+    --teal: #57c7bd;
+  }
+  *{ box-sizing: border-box; }
+  html,body{ margin: 0; min-height: 100%; }
+  body{
+    min-height: 100vh;
+    padding: clamp(28px, 7vw, 88px) 20px;
+    background: radial-gradient(110% 120% at 12% -10%, #17202a 0%, var(--bg) 48%, #060809 100%);
+    color: var(--ink);
+    font-family: ui-monospace, "SFMono-Regular", "Cascadia Code", Consolas, monospace;
+  }
+  main{ width: min(820px, 100%); margin: 0 auto; }
+  .eyebrow{ color: var(--amber); letter-spacing: .14em; text-transform: uppercase; font-size: 11px; }
+  h1{ margin: 10px 0 12px; font-size: clamp(30px, 6vw, 54px); letter-spacing: -.04em; }
+  .lede{ color: var(--dim); line-height: 1.7; max-width: 68ch; }
+  .grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 36px; }
+  .card{
+    display: block;
+    padding: 22px;
+    color: inherit;
+    text-decoration: none;
+    background: linear-gradient(180deg, var(--panel), #0d1116);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    transition: transform .16s ease, border-color .16s ease;
+  }
+  .card:hover{ transform: translateY(-2px); border-color: var(--amber); }
+  .tag{ color: var(--teal); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+  h2{ margin: 10px 0 8px; font-size: 18px; }
+  .card p{ margin: 0; color: var(--dim); font-family: ui-sans-serif, sans-serif; line-height: 1.55; font-size: 14px; }
 </style>
 </head>
 <body>
-<h1>igareosh.github.io</h1>
-<p><a href="/ARCHITECTURE.md">ARCHITECTURE.md</a></p>
-<p><a href="https://github.com/igareosh/fpf-agentic-thinking-map">fpf-agentic-thinking-map</a></p>
+<main>
+  <p class="eyebrow">igareosh · public work</p>
+  <h1>Explicit systems, inspectable movement.</h1>
+  <p class="lede">
+    Public source, architecture, and live runtime traces for the FPF Agentic
+    Thinking Map.
+  </p>
+
+  <div class="grid">
+    <a class="card" href="/fpf-agentic-thinking-map/demos/three-runs.html">
+      <span class="tag">v1.9.1 · Interactive</span>
+      <h2>Three live runtime traces</h2>
+      <p>Evidence recovery, external waiting, concrete move identity, and state-bound authorization.</p>
+    </a>
+
+    <a class="card" href="/ARCHITECTURE.md">
+      <span class="tag">Current map</span>
+      <h2>Architecture index</h2>
+      <p>The current module chain, runtime contract, and links to source documents.</p>
+    </a>
+
+    <a class="card" href="https://github.com/igareosh/fpf-agentic-thinking-map">
+      <span class="tag">MIT · Python</span>
+      <h2>Source repository</h2>
+      <p>The zero-dependency runtime, verification suite, examples, and development harness.</p>
+    </a>
+  </div>
+</main>
 </body>
 </html>

@@ -1,28 +1,46 @@
-# Architecture
+# FPF Agentic Thinking Map - Architecture
 
-Visual scheme of the thinking map — what each part does and how they fit together.
+Current architecture index for
+[`fpf-agentic-thinking-map`](https://github.com/igareosh/fpf-agentic-thinking-map).
+The library repository remains the source of truth.
 
-## Quick links
+## Live visual
 
-- [Project docs](https://github.com/igareosh/fpf-agentic-thinking-map)
-- [Project live demo](https://igareosh.github.io/fpf-agentic-thinking-map/)
+[Open the v1.9.1 three-run runtime trace](https://igareosh.github.io/fpf-agentic-thinking-map/demos/three-runs.html).
 
-## Module chain
+It shows three test-backed paths:
 
-- `primitives.py` — 12 primitives + 5 floors
-- `state.py` — binding + active state + slice
-- `guards.py` — 9 hard constraints
-- `logic.py` — 6 operators + rules
-- `traversal.py` — step engine + 10 declared outcomes
+- evidence recovery followed by a lawful transition;
+- `PendingInput` producing `AWAIT`, then resolving to `IDLE`;
+- a concrete `MoveIntent` protected by a state-bound
+  `AuthorizationReceipt`.
+
+## Current module chain
+
+- `primitives.py` - 10 primitives + 5 floors
+- `authorization.py` - expiring, single-use approval bound to transition + state
+- `pending_input.py` - external dependency identity and wake conditions
+- `move_intent.py` - concrete move identity, parameters, and lineage
+- `state.py` - runtime binding, active state, slices, and trace
+- `guards.py` - 9 hard constraints
+- `logic.py` - 6 operators + rules
+- `traversal.py` - step/inspect/attempt engine + 11 declared outcomes
+- `examples.py` - 8 shipped scenarios
+- `verify.py` - 26 deterministic checks
 
 ## Runtime contract
 
-`step()` is the normal runtime path. It returns a compact JSON slice:
+`step()` inspects what is currently possible. `inspect_move()` evaluates one
+concrete proposal without mutation. `attempt_transition()` is the explicit
+write path and rechecks evidence, gates, guards, and authorization before state
+changes.
 
-- where the agent is
-- what can fire
-- what is blocked
-- what evidence is missing or stale
-- what outcome applies
+The model remains free to generate and compare. The runtime keeps movement
+legality, waiting, approval, and trace identity explicit.
 
-The model stays free to generate. The map only keeps runtime state and checks the next lawful move.
+## Source documents
+
+- [Full architecture](https://github.com/igareosh/fpf-agentic-thinking-map/blob/main/ARCHITECTURE.md)
+- [Version tracker](https://github.com/igareosh/fpf-agentic-thinking-map/blob/main/docs/VERSION_TRACKER.md)
+- [Advisories](https://github.com/igareosh/fpf-agentic-thinking-map/blob/main/docs/deep/ADVISORIES.md)
+- [Development and compliance harness](https://github.com/igareosh/fpf-agentic-thinking-map/tree/main/dev_mcp)
